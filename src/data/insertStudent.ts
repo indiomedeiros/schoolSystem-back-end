@@ -13,14 +13,13 @@ export const insertStudent = async (student: Student) : Promise<void> => {
 
     await connection.raw(`
         INSERT INTO LS_Student 
-            (id, name, email, birth_date, mission_id)
+            (id, name, email, birth_date)
         VALUES
             (
                 '${student.id}',
                 '${student.name}',
                 '${student.email}',
-                '${student.birthDate}',
-                '${student.missionId}'
+                '${student.birthDate}'
             );
 
         INSERT INTO LS_Hobby 

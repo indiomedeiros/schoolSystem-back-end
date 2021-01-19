@@ -4,7 +4,7 @@ export type Student = {
     email: string,
     birthDate: string,
     hobbies: Hobbie[],
-    missionId: string
+    missionId?: string
 };
 
 export type Hobbie = {

@@ -9,7 +9,7 @@ export const createStudent = async (req: Request, res: Response) => {
     try {
         const { name, email, birthDate, missionId, hobbies } = req.body;
 
-        if ( !name || !email || !birthDate || !missionId ) {
+        if ( !name || !email || !birthDate ) {
             errorCode = 406;
             throw new Error("Todos os campos são obrigatórios. Por favor, preencha corretamente.")
         };
@@ -23,7 +23,6 @@ export const createStudent = async (req: Request, res: Response) => {
             name: name, 
             email: email,
             birthDate: dateToDBFormat(birthDate),
-            missionId: missionId,
             hobbies: modelHobbies
         }
 
