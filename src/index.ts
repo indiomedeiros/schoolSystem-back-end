@@ -1,20 +1,23 @@
 import express, { Express } from 'express';
 import cors from 'cors';
 import { AddressInfo } from 'net';
+import { createNewMission } from './endpoints/createNewMission';
 import { createStudent } from './endpoints/createStudent';
 import { getStudentAgeById } from './endpoints/getStudentAgeById';
 import createTeacher from './endpoints/createTeacher';
-
 
 const app: Express = express();
 app.use(express.json());
 app.use(cors());
 
+
+// Endpoints!
+
 app.post('/student', createStudent);
-
 app.get('/student/:id', getStudentAgeById);
+app.post('/mission', createNewMission);
+app.post('/teacher', createTeacher);
 
-app.post('/teacher', createTeacher)
 
 
 const server = app.listen(
