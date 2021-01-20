@@ -1,4 +1,4 @@
-enum MissionModules {
+export enum MissionModules {
     ONE = "1",
     TWO = "2",
     THREE = "3",
@@ -9,12 +9,12 @@ enum MissionModules {
     UNDEFINED = "undefined"
 }
 
-enum MissionPeriod {
+export enum MissionPeriod {
     FULLTIME = "full_time",
     NIGHT = "night"
 }
 
-type Mission = {
+export type Mission = {
     id: string,
     name: string,
     start_date: string,

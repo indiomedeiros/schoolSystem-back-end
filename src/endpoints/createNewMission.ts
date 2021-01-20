@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
-import insertNewClass from '../data/insertNewClass';
+import insertNewMission from '../data/insertNewMission';
 import { v4 as uuidv4 } from 'uuid';
+import { Mission } from '../types/mission'
 
-export const createNewClass = async (req: Request, res: Response): Promise<void> => {
+export const createNewMission = async (req: Request, res: Response): Promise<void> => {
     let errorCode: number = 400
     try {
         const { name, start_date, end_date, module, period } = req.body
@@ -12,22 +13,22 @@ export const createNewClass = async (req: Request, res: Response): Promise<void>
             throw new Error('Por favor, preencha todos os campos para inserir uma nova turma.')
         }
 
-        const id = uuidv4();
+        const mission: Mission = {
+            id: uuidv4(),
+            name: name,
+            start_date: start_date,
+            end_date: end_date,
+            module: module,
+            period: period
+        }
 
-        await insertNewClass(mission)
+        await insertNewMission(mission)
 
         res
             .status(200)
             .send({
-                message: "Turma criada com sucesso!",
-                mission: {
-                    id: id,
-                    name: name,
-                    start_date: start_date,
-                    end_date: end_date,
-                    module: module,
-                    period: period
-                }
+                message: "Turma criada com sucesso!", 
+                mission: mission
             })
 
     } catch (error) {

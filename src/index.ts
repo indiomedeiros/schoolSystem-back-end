@@ -1,6 +1,7 @@
 import express, { Express } from 'express';
 import cors from 'cors';
 import { AddressInfo } from 'net';
+import { createNewMission } from './endpoints/createNewMission';
 
 const app: Express = express();
 app.use(express.json());
@@ -10,6 +11,10 @@ app.use(cors());
 
 
 
+
+
+
+app.post('/mission', createNewMission)
 
 const server = app.listen(
     process.env.PORT || 3003,
