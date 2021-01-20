@@ -17,15 +17,13 @@ export default async function createTeacher(
     checkTeacher(email, "'email'", res.statusCode);
     checkTeacher(birth_date, "'birth_date'", res.statusCode);
 
-    //formatação da data
-    const arraySplitDate = birth_date.split("/");
-    
     //atribuição ao padrão de usuário (proferssor/professora)
     const userTeacher: userTeacher = {
       id: uuidv4(),
       name: name,
       email: email,
-      birth_date: formatDate(arraySplitDate),
+      //formatDate - função de formatação da data
+      birth_date: formatDate(birth_date),
     };
 
     //adicionando usuário no banco de dados
