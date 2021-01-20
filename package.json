@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && node ./build/index.js",
-    "dev": "ts-node-dev .src/index.ts"
+    "dev": "ts-node-dev src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
   "homepage": "https://github.com/future4code/dumont-labenu-system7#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "dayjs": "^1.10.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "knex": "^0.21.16",
