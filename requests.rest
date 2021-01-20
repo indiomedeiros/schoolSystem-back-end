@@ -4,8 +4,8 @@ Content-Type: application/json
 
 {
             "name": "Freud",
-            "start_date": "2018-04-30",
-            "end_date": "2020-04-30",
+            "start_date": "30/04/2017",
+            "end_date": "30/01/2021",
             "module": "1",
             "period": "full_time"
 }

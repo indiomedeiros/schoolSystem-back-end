@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import insertNewMission from '../data/insertNewMission';
 import { v4 as uuidv4 } from 'uuid';
 import { Mission } from '../types/mission'
+import { dateToDBFormat } from '../util/dateFormat';
 
 export const createNewMission = async (req: Request, res: Response): Promise<void> => {
     let errorCode: number = 400
@@ -16,8 +17,8 @@ export const createNewMission = async (req: Request, res: Response): Promise<voi
         const mission: Mission = {
             id: uuidv4(),
             name: name,
-            start_date: start_date,
-            end_date: end_date,
+            start_date: dateToDBFormat(start_date),
+            end_date: dateToDBFormat(end_date),
             module: module,
             period: period
         }
