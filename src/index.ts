@@ -1,13 +1,14 @@
 import express, { Express } from 'express';
 import cors from 'cors';
 import { AddressInfo } from 'net';
+import { createStudent } from './endpoints/createStudent';
 
 
 const app: Express = express();
 app.use(express.json());
 app.use(cors());
 
-
+app.post('/student', createStudent);
 
 
 
