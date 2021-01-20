@@ -20,3 +20,18 @@ export const dateToDBFormat = (ptDate: string): string => {
     const formatedDate = `${splitedDate[2]}-${splitedDate[1]}-${splitedDate[0]}`
     return formatedDate;
 }
+
+export const getAge = (birthDate: string): number => {
+    const birthObj: Date = new Date(birthDate);
+    const today: Date = new Date();
+    let age: number = today.getFullYear() - birthObj.getFullYear();
+  
+    if (
+      new Date(today.getFullYear(), today.getMonth(), today.getDate()) <
+      new Date(today.getFullYear(), birthObj.getMonth(), birthObj.getDate())
+    ) { 
+        age--;
+    }
+  
+    return age;
+};

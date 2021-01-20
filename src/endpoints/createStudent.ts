@@ -14,6 +14,11 @@ export const createStudent = async (req: Request, res: Response) => {
             throw new Error("Todos os campos são obrigatórios. Por favor, preencha corretamente.")
         };
 
+        if ( !hobbies || hobbies.length === 0) {
+            errorCode = 406;
+            throw new Error("Informe seus hobbies");
+        };
+
         const modelHobbies: Hobbie[] = hobbies.map((hobbie: Hobbie) => {
             return { id: uuidv4(), name: hobbie }
         });
@@ -31,9 +36,8 @@ export const createStudent = async (req: Request, res: Response) => {
         res.status(200).send({
             message: "Success",
             student: student
-        })
-
+        });
     } catch (error) {
         res.status(errorCode).send(error.sqlMessage || error.message);
-    }
+    };
 };

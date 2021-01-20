@@ -20,14 +20,14 @@ export const insertStudent = async (student: Student) : Promise<void> => {
                 '${student.name}',
                 '${student.email}',
                 '${student.birthDate}'
-            );
+            );  
 
         INSERT INTO LS_Hobby 
             (id, name)
-        VALUES ${hobbyValues};    
+        VALUES ${hobbyValues};
 
         INSERT INTO LS_Student_Hobby 
             (student_id, hobby_id)
         VALUES ${studentHobbyValues};
-    `);    
+    `);
 };
