@@ -3,6 +3,7 @@ import cors from 'cors';
 import { AddressInfo } from 'net';
 import { createStudent } from './endpoints/createStudent';
 import { getStudentAgeById } from './endpoints/getStudentAgeById';
+import createTeacher from './endpoints/createTeacher';
 
 
 const app: Express = express();
@@ -13,6 +14,7 @@ app.post('/student', createStudent);
 
 app.get('/student/:id', getStudentAgeById);
 
+app.post('/teacher', createTeacher)
 
 
 const server = app.listen(
