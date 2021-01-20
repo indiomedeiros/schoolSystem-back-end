@@ -3,9 +3,9 @@ POST http://localhost:3003/mission
 Content-Type: application/json
 
 {
-            "name": "Freud",
-            "start_date": "30/04/2017",
-            "end_date": "30/01/2021",
-            "module": "1",
-            "period": "full_time"
+            "name": "Mendel",
+            "start_date": "30/04/2021",
+            "end_date": "30/11/2021",
+            "module": "undefined",
+            "period": "night"
 }
