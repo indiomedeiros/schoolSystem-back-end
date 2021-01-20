@@ -2,19 +2,24 @@ import express, { Express } from 'express';
 import cors from 'cors';
 import { AddressInfo } from 'net';
 import { createNewMission } from './endpoints/createNewMission';
+import { createStudent } from './endpoints/createStudent';
+import { getStudentAgeById } from './endpoints/getStudentAgeById';
 
 const app: Express = express();
 app.use(express.json());
 app.use(cors());
 
 
+// Endpoints!
 
+app.post('/student', createStudent);
 
-
-
-
+app.get('/student/:id', getStudentAgeById);
 
 app.post('/mission', createNewMission)
+
+
+
 
 const server = app.listen(
     process.env.PORT || 3003,

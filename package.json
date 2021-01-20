@@ -27,6 +27,7 @@
   "homepage": "https://github.com/future4code/dumont-labenu-system7#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "dayjs": "^1.10.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "knex": "^0.21.16",
