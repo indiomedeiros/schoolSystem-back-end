@@ -2,6 +2,7 @@ import express, { Express } from 'express';
 import cors from 'cors';
 import { AddressInfo } from 'net';
 import { createStudent } from './endpoints/createStudent';
+import { getStudentAgeById } from './endpoints/getStudentAgeById';
 
 
 const app: Express = express();
@@ -10,6 +11,7 @@ app.use(cors());
 
 app.post('/student', createStudent);
 
+app.get('/student/:id', getStudentAgeById);
 
 
 
