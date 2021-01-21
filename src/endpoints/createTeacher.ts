@@ -10,18 +10,18 @@ export default async function createTeacher(
   req: Request,
   res: Response
 ): Promise<void> {
-  let errorCode: number = 400;
+
   try {
     const { name, email, birth_date, specialties } = req.body;
 
     //validaçãodo do docente
-    checkTeacher(name, "'name'", errorCode);
-    checkTeacher(email, "'email'", errorCode);
-    checkTeacher(birth_date, "'birth_date'", errorCode);
+    checkTeacher(name, "'name'", res);
+    checkTeacher(email, "'email'", res);
+    checkTeacher(birth_date, "'birth_date'", res);
 
     //validação da especialidade
     if (!specialties || specialties.lenght === 0) {
-      errorCode = 422;
+      res.statusCode = 422;
       throw new Error("informe uma ou mais especialidades");
     }
     for (let item of specialties) {
@@ -50,6 +50,6 @@ export default async function createTeacher(
 
     res.status(200).send(userTeacher);
   } catch (error) {
-    res.status(errorCode).send(error.sqlMessage || error.message );
+    res.send(error.sqlMessage || error.message );
   }
 }
