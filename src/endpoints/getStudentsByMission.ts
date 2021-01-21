@@ -10,7 +10,7 @@ export const getStudentsByMission = async (req: Request, res: Response) => {
         const students = await selectStudentsByMission(id);
 
         if ( students.length === 0 ) {
-            errorCode = 400;
+            errorCode = 404;
             throw new Error("Turma não encontrada");
         }
 
