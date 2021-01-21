@@ -18,32 +18,35 @@ export default async function addTeacherClass(req: Request, res: Response) {
       mission_id: mission_id,
     };
 
-    //pega os dados no banco de dados
+    //pega os dados da turma e do docente no banco de dados
+    //esses dados são para serem validados
     const result = await selectTeacherClass(teacherClass);
     console.log(result[1]);
 
-    //compara o id da requisição com o id do docente no banco de dados
+    //compara o id da requisição com o
+    //id do docente existente no bando de dados
     const resultSearcherTeacherId = result[0].findIndex((idFilter: any) => {
       return idFilter.id === id;
     });
 
-    //validação do docente
+    //validação do id do docente
     if (resultSearcherTeacherId === -1) {
       res.statusCode = 404;
       throw new Error("Docente não foi encontrado. Verifique o id");
     }
 
-    //compara o id da requisição com o id da turma no banco de dados
+    //compara o id da requisição com o 
+    //id da turma existente no banco de dados
     const resultSearcherClassId = result[1].findIndex((idFilter: any) => {
       return idFilter.id === mission_id;
     });
 
-    //validação da turma
+    //validação do id da turma
     if (resultSearcherClassId === -1) {
       res.statusCode = 404;
       throw new Error("A Turma não foi encontrada. Verifique o mission_id");
     }
-    //atualiza a turma que o docente será responsável
+    //adiciona a turma nos dados do docente
     await updateTeacherClass(teacherClass);
 
     res.status(200).send("professor adicionado na turma!");
