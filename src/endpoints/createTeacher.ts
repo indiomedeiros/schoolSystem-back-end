@@ -42,7 +42,7 @@ export default async function createTeacher(
       email: email,
       //formatDate - função de formatação da data
       birth_date: formatDate(birth_date),
-      specialties: arraySpecialtys
+      specialties: arraySpecialtys,
     };
 
     //adicionando usuário no banco de dados
@@ -51,5 +51,6 @@ export default async function createTeacher(
     res.status(200).send(userTeacher);
   } catch (error) {
     res.send(error.sqlMessage || error.message );
+
   }
 }

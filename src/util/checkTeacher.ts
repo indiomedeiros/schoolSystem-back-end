@@ -8,6 +8,7 @@ export default function checkTeacher(
   res: Response
 ) {
   let Message = `(verifique o body) ausência da propriedade `;
+  
   if (!req || req === undefined) {
     res.statusCode= 422;
     throw new Error(Message + props);
