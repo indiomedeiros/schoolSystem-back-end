@@ -10,6 +10,7 @@ export default async function createTeacher(
   req: Request,
   res: Response
 ): Promise<void> {
+
   try {
     const { name, email, birth_date, specialties } = req.body;
 
@@ -49,6 +50,7 @@ export default async function createTeacher(
 
     res.status(200).send(userTeacher);
   } catch (error) {
-    res.send(error.sqlMessage || error.message);
+    res.send(error.sqlMessage || error.message );
+
   }
 }
