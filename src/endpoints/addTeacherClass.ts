@@ -3,6 +3,7 @@ import checkTeacher from "../util/checkTeacher";
 import { teacherClassType } from "../types/userTeacher";
 import updateTeacherClass from "../data/selectTeacherClass";
 import selectTeacherClass from "../data/selectTeacherClass";
+import checkAddTeacherClass from "../util/checkAddTeacherClass";
 
 export default async function addTeacherClass(req: Request, res: Response) {
   try {
@@ -21,31 +22,12 @@ export default async function addTeacherClass(req: Request, res: Response) {
     //pega os dados da turma e do docente no banco de dados
     //esses dados são para serem validados
     const result = await selectTeacherClass(teacherClass);
-    console.log(result[1]);
 
-    //compara o id da requisição com o
-    //id do docente existente no bando de dados
-    const resultSearcherTeacherId = result[0].findIndex((idFilter: any) => {
-      return idFilter.id === id;
-    });
+    // a função compara o id da requisição com o
+    //id do docente/tumar existente no bando de dados
+    checkAddTeacherClass(result, id, 0, res, "id");
+    checkAddTeacherClass(result, mission_id, 1, res, "mission_id");
 
-    //validação do id do docente
-    if (resultSearcherTeacherId === -1) {
-      res.statusCode = 404;
-      throw new Error("Docente não foi encontrado. Verifique o id");
-    }
-
-    //compara o id da requisição com o 
-    //id da turma existente no banco de dados
-    const resultSearcherClassId = result[1].findIndex((idFilter: any) => {
-      return idFilter.id === mission_id;
-    });
-
-    //validação do id da turma
-    if (resultSearcherClassId === -1) {
-      res.statusCode = 404;
-      throw new Error("A Turma não foi encontrada. Verifique o mission_id");
-    }
     //adiciona a turma nos dados do docente
     await updateTeacherClass(teacherClass);
 
