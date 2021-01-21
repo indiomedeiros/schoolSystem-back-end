@@ -19,6 +19,6 @@ export type Mission = {
     name: string,
     start_date: string,
     end_date: string,
-    module: MissionModules,
+    module?: MissionModules,
     period: MissionPeriod
 }

@@ -12,6 +12,6 @@ export default async function insertNewMission(mission: Mission): Promise<void> 
             '${mission.end_date}', 
             '${mission.module}', 
             '${mission.period}'
-        )
+        );
     `)
 }
