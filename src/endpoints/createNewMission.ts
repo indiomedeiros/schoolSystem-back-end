@@ -7,20 +7,21 @@ import { dateToDBFormat } from '../util/dateFormat';
 export const createNewMission = async (req: Request, res: Response): Promise<void> => {
     let errorCode: number = 400
     try {
-        let { name, start_date, end_date, module, period } = req.body
+        const { name, start_date, end_date, module, period } = req.body
+        let editedName = name;
 
-        if (!name || !start_date || !end_date || !module || !period) {
+        if (!name || !start_date || !end_date || !period) {
             errorCode = 422
             throw new Error('Por favor, preencha todos os campos para inserir uma nova turma.')
         }
 
         if (period === "night"){
-            name = name as string + "-na-night"
+            editedName = name as string + "-na-night"
         }
 
         const mission: Mission = {
             id: uuidv4(),
-            name: name,
+            name: editedName,
             start_date: dateToDBFormat(start_date),
             end_date: dateToDBFormat(end_date),
             module: module,
