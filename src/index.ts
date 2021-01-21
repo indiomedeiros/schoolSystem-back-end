@@ -5,6 +5,7 @@ import { createNewMission } from './endpoints/createNewMission';
 import { createStudent } from './endpoints/createStudent';
 import { getStudentAgeById } from './endpoints/getStudentAgeById';
 import { getStudentsByMission } from './endpoints/getStudentsByMission';
+import { getStudentsWithSameHobby } from './endpoints/getStudentsWithSameHobby';
 import createTeacher from './endpoints/createTeacher';
 import addTeacherClass from './endpoints/addTeacherClass';
 
@@ -15,6 +16,7 @@ app.use(cors());
 
 
 // Endpoints!
+app.get('/student/search', getStudentsWithSameHobby);
 app.get('/student/:id', getStudentAgeById);
 app.get('/student/mission/:id', getStudentsByMission);
 app.post('/student', createStudent);
