@@ -33,7 +33,7 @@ export const createNewMission = async (req: Request, res: Response): Promise<voi
         res
             .status(200)
             .send({
-                message: "Turma criada com sucesso!", 
+                message: `Missão ${name} criada com sucesso!`, 
                 mission: mission
             })
 
