@@ -3,6 +3,7 @@ import { insertStudent } from '../data/insertStudent';
 import { Hobbie, Student } from '../types/Student';
 import { v4 as uuidv4 } from 'uuid';
 import { dateToDBFormat } from '../util/dateFormat';
+import { handleDuplicateEntry } from '../util/sqlErrorHandling';
 
 export const createStudent = async (req: Request, res: Response) => {
     let errorCode: number = 400;
@@ -38,6 +39,7 @@ export const createStudent = async (req: Request, res: Response) => {
             student: student
         });
     } catch (error) {
-        res.status(errorCode).send(error.sqlMessage || error.message);
+        const sqlMessage = handleDuplicateEntry(error.sqlMessage, 'E-mail');
+        res.status(errorCode).send(sqlMessage || error.message);
     };
 };
