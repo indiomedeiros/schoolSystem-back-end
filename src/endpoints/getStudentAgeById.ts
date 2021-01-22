@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
-import { selectStudentAgeById } from '../data/selectStudentAgeById';
+import { checkId } from '../data/checkId';
 import { getAge } from '../util/dateFormat';
 
 export const getStudentAgeById = async (req: Request, res: Response) => {
     let errorCode: number = 400;
     try {
         const { id } = req.params;
-        const student = await selectStudentAgeById(id);
+        const student = await checkId(id, "LS_Student");
         
         if ( !student ) {
             errorCode = 404;

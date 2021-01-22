@@ -27,7 +27,7 @@ app.post('/student', createStudent);
 app.post('/mission', createNewMission);
 
 app.post('/teacher', createTeacher);
-app.put('/teacher/:id', addTeacherClass);
+app.put('/teacher/:teacherId', addTeacherClass);
 
 
 const server = app.listen(
