@@ -1,33 +1,32 @@
-## LabenuSystem:
+## Instruções
 
-Você estuda na Labenu_ há tanto tempo que já parecem anos, não é? Então, hoje, vamos pedir para criar um sistema que represente o básico da nossa organização. 
+* `npm install`:
+Instala as dependências do projeto.
 
-Ele deve possuir, ao menos, as 3 entidades importantes:
+### Criar o arquivo .env
+Criar o arquivo `.env` com as informações do seu banco de dados.
+```
+DB_HOST = host
+DB_USER = usuario
+DB_PASSWORD = senha
+DB_NAME = nome-do-banco-de-dados
+```
 
-1. Estudantes 
+### Criar e popular as tabelas
+* `npm run set-tables`:
+Cria as tabelas necessárias para o projeto.
 
-    Representa estudantes da nossa instituição. Eles devem possuir: id, nome, email, data de nascimento e os principais hobbies dele. 
+* `npm run populate`:
+Popula as tabelas com dados iniciais.
 
-2. Docente
+### Executar o projeto
 
-    Representa docentes da nossa instituição. Eles devem possuir: id, nome, email, data de nascimento e todas as especialidades dele. Há 7 especialidades: React, Redux, CSS, Testes, Typescript, Programação Orientada a Objetos e Backend
+* `npm run start`: 
+Inicia a conexão com o banco de dados e roda o projeto.
+Precisa dar o comando `ctrl + C` para parar a execução.
 
-3. Turma
+* `npm run dev`:
+Reinicia o servidor automaticamente toda a vez que o projeto for salvo.
 
-    Toda turma é composta das seguintes características: id, nome, data de início, data de término, lista de professores responsáveis, uma lista de alunos e módulo atual em que a turma está.
-
-    O módulo pode assumir os valores de 1 a 7 ou `undefined`, indicando que as aulas dessa turma ainda não começaram. Para esse exercício, vamos considerar que existam dois tipos de turma: integral ou noturna. Há uma restrição para o nome das turmas noturnas: tem que terminar com `-na-night`.
-
-As funcionalidades básicas são:
-
-→ Criar estudante;
-
-→ Criar docente;
-
-→ Criar turma;
-
-→ Adicionar estudante na turma;
-
-→ Adicionar docente na turma;
-
-→ Pegar a idade de algum estudante a partir do id
+### Endpoints
+Todos os Enpoints e exemplos de requisições estão disponíveis na nossa [documentação](https://documenter.getpostman.com/view/13242412/TVza9tK7).
