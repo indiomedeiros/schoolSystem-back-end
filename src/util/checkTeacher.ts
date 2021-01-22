@@ -1,13 +1,16 @@
+import { Response } from "express";
+
 //validação do body do createTeacher
 
 export default function checkTeacher(
   req: string,
   props: string,
-  resStatusCode: number
+  res: Response
 ) {
   let Message = `(verifique o body) ausência da propriedade `;
+  
   if (!req || req === undefined) {
-    resStatusCode = 404;
+    res.statusCode= 422;
     throw new Error(Message + props);
   }
 }

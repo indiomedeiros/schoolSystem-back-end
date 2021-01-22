@@ -24,4 +24,9 @@ export enum specialtyEnum {
     BACKEND = "Backend"
 } 
 
+//tipo para adicionar professores na turma
+export type teacherClassType = {
+    id: string,
+    mission_id: string
+}
 
