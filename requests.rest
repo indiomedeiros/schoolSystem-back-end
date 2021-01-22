@@ -3,7 +3,7 @@ POST http://localhost:3003/mission
 Content-Type: application/json
 
 {
-            "name": "Gal Costa",
+            "name": "MC Tha",
             "start_date": "30/04/2021",
             "end_date": "30/11/2021",
             "module": "5",
@@ -15,8 +15,26 @@ POST http://localhost:3003/student
 Content-Type: application/json
 
 {
-    "name": "Blue",
-    "email": "blue@gmail.com",
+    "name": "Yoncé",
+    "email": "yonce@gmail.com",
     "birthDate": "23/08/2020",
-    "hobbies": ["fazer parkour nas arvre"] 
+    "hobbies": ["caçar cigarra", "derrubar cinzeiro"] 
+}
+
+
+### Add Student To Class
+PUT http://localhost:3003/student/4964234a-1652-45f6-af14-adf394d3db95
+Content-Type: application/json
+
+{
+    "missionId": "ab4b59c9-fc6e-4afc-9548-dd9ecdd345cc"
+}
+
+
+### Change Student's Class
+PUT http://localhost:3003/student/change/1a766eeb-4b74-4645-aae0-0e3ca51e5260
+Content-Type: application/json
+
+{
+    "missionId": "ab4b59c9-fc6e-4afc-9548-dd9ecdd345cc"
 }

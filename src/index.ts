@@ -17,8 +17,8 @@ app.use(cors());
 
 app.post('/student', createStudent);
 app.get('/student/:id', getStudentAgeById);
-app.put('/student/:studentId/:missionId', addStudentToClass);
-app.put('/student/change/:studentId/:missionId', changeStudentsClass)
+app.put('/student/:studentId', addStudentToClass);
+app.put('/student/change/:studentId', changeStudentsClass);
 app.post('/mission', createNewMission);
 app.post('/teacher', createTeacher);
 
