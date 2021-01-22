@@ -11,7 +11,7 @@ export default async function createTeacher(
   req: Request,
   res: Response
 ): Promise<void> {
-
+  let errorCode = 400;
   try {
     const { name, email, birth_date, specialties } = req.body;
 
@@ -22,7 +22,7 @@ export default async function createTeacher(
 
     //validação da especialidade
     if (!specialties || specialties.lenght === 0) {
-      res.statusCode = 422;
+      errorCode = 422;
       throw new Error("informe uma ou mais especialidades");
     }
     for (let item of specialties) {
@@ -52,7 +52,7 @@ export default async function createTeacher(
     res.status(200).send(userTeacher);
   } catch (error) {
     const sqlMessage = handleDuplicateEntry(error.sqlMessage, "E-mail")
-    res.send(sqlMessage || error.message );
+    res.status(errorCode).send(sqlMessage || error.message );
 
   }
 }

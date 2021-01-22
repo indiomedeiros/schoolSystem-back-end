@@ -39,6 +39,6 @@ export default async function addTeacherClass(req: Request, res: Response) {
 
     res.status(200).send(`'${teacherResult.name}' agora vai dar aula na turma '${missionResult.name}'!`);
   } catch (error) {
-    res.send(error.sqlMessage || error.message);
+    res.status(errorCode).send(error.sqlMessage || error.message);
   }
 }
