@@ -4,6 +4,8 @@
   "description": "Sistema para Labenu",
   "main": "index.js",
   "scripts": {
+    "set-tables": "tsc && node ./build/setup/createTables.js",
+    "populate": "tsc && node ./build/setup/populate.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && node ./build/index.js",
     "dev": "ts-node-dev src/index.ts"
