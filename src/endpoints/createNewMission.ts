@@ -3,6 +3,7 @@ import insertNewMission from '../data/insertNewMission';
 import { v4 as uuidv4 } from 'uuid';
 import { Mission } from '../types/mission'
 import { dateToDBFormat } from '../util/dateFormat';
+import { handleDuplicateEntry } from '../util/sqlErrorHandling';
 
 export const createNewMission = async (req: Request, res: Response): Promise<void> => {
     let errorCode: number = 400
@@ -38,8 +39,7 @@ export const createNewMission = async (req: Request, res: Response): Promise<voi
             })
 
     } catch (error) {
-        res
-            .status(errorCode)
-            .send({message: error.sqlMessage || error.message})
+        const sqlMessage = handleDuplicateEntry(error.sqlMessage, "Nome da turma")
+        res.send(sqlMessage || error.message );
     }
 }

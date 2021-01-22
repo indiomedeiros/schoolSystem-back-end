@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { updateStudentsClass } from '../data/updateStudentsClass';
-import { checkMissionId, checkStudentId } from '../util/checkId'
+import { checkId}  from '../data/checkId'
 
 export const changeStudentsClass = async (req: Request, res: Response): Promise<void> => {
     let errorCode: number = 400
@@ -8,13 +8,13 @@ export const changeStudentsClass = async (req: Request, res: Response): Promise<
         const { studentId } = req.params;
         const { missionId } = req.body;
 
-        const missionResult = await checkMissionId(missionId)
+        const missionResult = await checkId(missionId, "LS_Mission")
         if(!missionResult) {
             errorCode = 404
             throw new Error('Turma não existe. Por favor, informe um Id de turma válido.')
         }
 
-        const studentResult = await checkStudentId(studentId)
+        const studentResult = await checkId(studentId, "LS_Student")
         if(!studentResult) {
             errorCode = 404
             throw new Error('Estudante não encontrade. Informe um Id de estudante válido.')

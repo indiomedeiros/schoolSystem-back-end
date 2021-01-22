@@ -1,37 +1,43 @@
 import { Request, Response } from "express";
-import checkTeacher from "../util/checkTeacher";
-import { teacherClassType } from "../types/userTeacher";
-import updateTeacherClass from "../data/selectTeacherClass";
-import selectTeacherClass from "../data/selectTeacherClass";
-import checkAddTeacherClass from "../util/checkAddTeacherClass";
+import { checkId } from "../data/checkId";
+import updateTeacherClass from "../data/updateTeacherClass";
 
 export default async function addTeacherClass(req: Request, res: Response) {
+  let errorCode: number = 400
   try {
-    const { mission_id } = req.body;
-    const { id } = req.params;
+    const { missionId } = req.body;
+    const { teacherId} = req.params;
 
     //validação dos id's
-    checkTeacher(id, "'id'", res);
-    checkTeacher(mission_id, "'mission_id'", res);
+    if(!missionId){
+      errorCode = 422
+      throw new Error("Preencha o id da turma")
+    }
 
-    const teacherClass: teacherClassType = {
-      id: id,
-      mission_id: mission_id,
-    };
-
+    if(!teacherId){
+      errorCode = 422
+      throw new Error("Parâmetro 'teacherId' está faltando ")
+    }
     //pega os dados da turma e do docente no banco de dados
     //esses dados são para serem validados
-    const result = await selectTeacherClass(teacherClass);
+    const teacherResult = await checkId(teacherId, "LS_Teacher");
+    if(!teacherResult) {
+      errorCode = 404
+      throw new Error('Docente não encontrade. Informe um Id de docente válido.')
+    }
 
+    const missionResult = await checkId(missionId, "LS_Mission");
+    if(!missionResult) {
+      errorCode = 404
+      throw new Error('Turma não encontrada. Informe um Id de turma válido.')
+    }
     // a função compara o id da requisição com o
     //id do docente/tumar existente no bando de dados
-    checkAddTeacherClass(result, id, 0, res, "id");
-    checkAddTeacherClass(result, mission_id, 1, res, "mission_id");
-
+    
     //adiciona a turma nos dados do docente
-    await updateTeacherClass(teacherClass);
+    await updateTeacherClass(teacherId, missionId);
 
-    res.status(200).send("professor adicionado na turma!");
+    res.status(200).send(`'${teacherResult.name}' agora vai dar aula na turma '${missionResult.name}'!`);
   } catch (error) {
     res.send(error.sqlMessage || error.message);
   }

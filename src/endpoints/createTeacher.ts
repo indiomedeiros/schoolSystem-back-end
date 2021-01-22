@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import insertTeacher from "../data/insertTeacher";
 import formatDate from "../util/formatDate";
 import checkSpecialty from "../util/checkSpecialty";
+import { handleDuplicateEntry } from "../util/sqlErrorHandling";
 
 export default async function createTeacher(
   req: Request,
@@ -50,7 +51,8 @@ export default async function createTeacher(
 
     res.status(200).send(userTeacher);
   } catch (error) {
-    res.send(error.sqlMessage || error.message );
+    const sqlMessage = handleDuplicateEntry(error.sqlMessage, "E-mail")
+    res.send(sqlMessage || error.message );
 
   }
 }

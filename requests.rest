@@ -27,14 +27,35 @@ PUT http://localhost:3003/student/4964234a-1652-45f6-af14-adf394d3db95
 Content-Type: application/json
 
 {
-    "missionId": "ab4b59c9-fc6e-4afc-9548-dd9ecdd345cc"
+    "missionId": "783a5bab-0d95-4940-81ea-9fa3746d659d"
 }
 
 
 ### Change Student's Class
-PUT http://localhost:3003/student/change/1a766eeb-4b74-4645-aae0-0e3ca51e5260
+PUT http://localhost:3003/student/change/
 Content-Type: application/json
 
 {
     "missionId": "ab4b59c9-fc6e-4afc-9548-dd9ecdd345cc"
+}
+
+###
+GET http://localhost:3003/student/3bf3bbf3-802f-4e6d-b0d4-3e73d2600c6a
+
+### Add Teacher to Class
+PUT http://localhost:3003/teacher/ef599907-0f24-4d8d-9762-71d38db41190
+Content-Type:application/json
+
+{
+    "missionId": "783a5bab-0d95-4940-81ea-9fa3746d659d"
+}
+###Create Teacher
+POST http://localhost:3003/teacher
+Content-Type: application/json
+
+{
+    "name": "Aline",
+    "email": "Aline2021@gmail.com",
+    "birth_date": "20/01/1988",
+    "specialties": [ "React", "Redux", "Backend", "CSS"]
 }
