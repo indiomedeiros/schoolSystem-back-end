@@ -1,3 +1,26 @@
+## School system:
+
+Sistema que represante o básico de uma API de escola. 
+
+Devs responsáveis: 
+Aline Vignoli de Lima
+Índio Medeiros
+Marina Azzi Nogueira
+
+As funcionalidades básicas são:
+
+→ Criar estudante;
+
+→ Criar docente;
+
+→ Criar turma;
+
+→ Adicionar estudante na turma;
+
+→ Adicionar docente na turma;
+
+→ Pegar a idade de algum estudante a partir do id
+
 ## Instruções
 
 * `npm install`:
