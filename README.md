@@ -3,9 +3,9 @@
 Sistema que represante o básico de uma API de escola. 
 
 Devs responsáveis: 
-Aline Vignoli de Lima
-Índio Medeiros
-Marina Azzi Nogueira
+* Aline Vignoli de Lima
+* Índio Medeiros
+* Marina Azzi Nogueira
 
 As funcionalidades básicas são:
 
